@@ -11,18 +11,32 @@ html {
   scroll-behavior: smooth;
 }
 
+:root {
+  --bg: #0b0b0b;
+  --surface: #0f0f0f;
+  --card: #121212;
+  --text: #e6e6e6;
+  --muted: #9a9a9a;
+  --accent: #00e200e0;
+  --glass: rgba(255, 255, 255, 0.02);
+  --glass-weak: rgba(195,255,0,0.04);
+}
+
 body {
   font-family: 'Muli', sans-serif;
-  color: #333;
+  color: var(--text);
+  background-color: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
 /* ========== NAVBAR ========== */
 .navbar {
   margin-bottom: 0;
-  background-color: rgba(43, 43, 43, 0.98);
+  background-color: rgba(10, 10, 10, 0.95);
   border: none;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.6);
   transition: all 0.3s ease;
 }
 
@@ -50,8 +64,8 @@ body {
 .navbar-default .navbar-nav > li.active > a,
 .navbar-default .navbar-nav > li.active > a:hover,
 .navbar-default .navbar-nav > li.active > a:focus {
-  color: #FFFFFF;
-  background-color: #27AE60;
+  color: #1a1a1a;
+  background-color: #00e200e0;
   border-radius: 3px;
 }
 
@@ -70,6 +84,7 @@ body {
   justify-content: center;
   overflow: hidden;
   margin-top: 60px;
+  color: #e6e6e6;
 }
 
 .hero-background {
@@ -92,7 +107,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(39, 174, 96, 0.85) 0%, rgba(42, 35, 69, 0.85) 100%);
+  background: linear-gradient(135deg, 00e200e0 0%, rgba(30, 30, 30, 0.9) 100%);
   z-index: 1;
 }
 
@@ -125,8 +140,8 @@ body {
 .scroll-btn {
   display: inline-block;
   margin-top: 30px;
-  background-color: #27AE60;
-  color: #333 !important;
+  background-color: #00e200e0;
+  color: #1a1a1a !important;
   border: none;
   padding: 15px 40px;
   font-weight: 700;
@@ -134,6 +149,7 @@ body {
   border-radius: 50px;
   transition: all 0.3s ease;
   animation: bounce 2s infinite 1s;
+  box-shadow: 0 0 20px rgba(195, 255, 0, 0.4);
 }
 
 .scroll-btn:hover {
@@ -149,7 +165,7 @@ body {
 /* ========== ABOUT SECTION ========== */
 .about-section {
   padding: 80px 0;
-  background-color: #f8f9fa;
+  background-color: var(--surface);
 }
 
 .section-title {
@@ -160,7 +176,7 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-size: 2.5rem;
   font-weight: 700;
-  color: #2B2B2B;
+  color: var(--text);
   letter-spacing: 2px;
   margin-bottom: 20px;
 }
@@ -168,7 +184,7 @@ body {
 .title-underline {
   width: 80px;
   height: 4px;
-  background: linear-gradient(90deg, #27AE60, #FFFFFF);
+  background: linear-gradient(90deg, #00e200e0, #FFFFFF);
   margin: 0 auto;
   border-radius: 2px;
 }
@@ -177,24 +193,24 @@ body {
   margin-bottom: 30px;
 }
 
-.profile-image {
-  width: 350px;
-  height: 400px;
-  border: 5px solid #27AE60;
-  object-fit: cover;
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 50px rgb(0, 0, 0);
+.profile-info {
+  background-color: var(--surface);
+  padding: 40px;
+  border-radius: 8px;
+  margin-top: 30px;
 }
-
-.profile-image:hover {
-  transform: scale(1.05);
-  box-shadow: 0 15px 50px rgba(39, 174, 96, 0.3);
+.profile-info h5 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 30px;
+  letter-spacing: 0.5px;
 }
 
 .about-text {
   font-size: 1rem;
   line-height: 1.8;
-  color: #555;
+  color: var(--muted);
   margin-bottom: 20px;
   text-align: justify;
 }
@@ -206,9 +222,61 @@ body {
 .skills-container h4 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  color: #27AE60;
+  color: #00e200e0;
   margin-bottom: 25px;
   letter-spacing: 1px;
+}
+
+/* ========== STATISTICS SECTION ========== */
+.statistics-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 30px;
+  margin: 40px 0;
+  padding: 30px;
+  background: linear-gradient(135deg, var(--glass-weak) 0%, rgba(255,255,255,0.02) 100%);
+  border-radius: 8px;
+  border-left: 4px solid var(--accent);
+}
+
+.stat-item {
+  text-align: center;
+  position: relative;
+}
+
+.stat-number {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #00e200e0;
+  margin: 0 0 10px 0;
+  animation: scalePopIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
+  position: relative;
+}
+
+.stat-number::before {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 3px;
+  background: linear-gradient(90deg, #00e200e0, rgba(195, 255, 0, 0));
+  border-radius: 2px;
+  opacity: 0;
+  animation: slideInLeft 0.6s ease-out 0.5s both;
+}
+
+.stat-label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: 0;
+  letter-spacing: 0.5px;
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+  text-transform: uppercase;
 }
 
 .skill-item {
@@ -231,15 +299,15 @@ body {
 
 .skill-progress {
   height: 100%;
-  background: linear-gradient(90deg, #27AE60, #FFFFFF);
+  background: linear-gradient(90deg, #00e200e0, #FFFFFF);
   border-radius: 10px;
   animation: slideInLeft 1s ease-out;
 }
 
 /* ========== RESUME SECTION ========== */
 .resume-section {
-  padding: 80px 0;
-  background-color: #fff;
+    padding: 80px 0;
+    background-color: var(--surface);
 }
 
 .resume-item {
@@ -249,36 +317,36 @@ body {
 
 .resume-icon {
   font-size: 2.5rem;
-  color: #27AE60;
+  color: #00e200e0;
   margin-right: 25px;
   flex-shrink: 0;
 }
 
 .resume-text h4 {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  color: #2B2B2B;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: var(--text);
   margin: 0 0 15px 0;
   letter-spacing: 0.5px;
 }
 
 .resume-text h5 {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  color: #2B2B2B;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: var(--text);
   margin: 0 0 8px 0;
   letter-spacing: 0.5px;
 }
 
 .resume-meta {
-  color: #27AE60;
+  color: #00e200e0;
   font-size: 0.9rem;
   font-weight: 600;
   margin: 0 0 10px 0;
 }
 
 .resume-desc {
-  color: #666;
+    color: var(--muted);
   font-size: 0.95rem;
   margin: 0;
   line-height: 1.6;
@@ -288,22 +356,16 @@ body {
 .cgpa-display {
   margin-top: 20px;
   padding: 20px;
-  background: linear-gradient(135deg, rgba(39, 174, 96, 0.1) 0%, rgba(255, 255, 255, 0.5) 100%);
-  border-left: 4px solid #27AE60;
+  background: linear-gradient(135deg, var(--glass-weak) 0%, rgba(255,255,255,0.02) 100%);
+  border-left: 4px solid var(--accent);
   border-radius: 5px;
   animation: slideInUp 0.8s ease-out 0.4s both;
-}
-
-.cgpa-item {
-  display: flex;
-  align-items: center;
-  gap: 15px;
 }
 
 .cgpa-label {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  color: #2B2B2B;
+  color: var(--text);
   font-size: 1.1rem;
   letter-spacing: 0.5px;
   animation: fadeIn 0.8s ease-out 0.5s both;
@@ -313,11 +375,11 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
-  color: #27AE60;
-  background-color: #fff;
+  color: var(--accent);
+  background-color: var(--card);
   padding: 8px 15px;
   border-radius: 25px;
-  box-shadow: 0 2px 8px rgba(39, 174, 96, 0.15);
+  box-shadow: 0 2px 8px rgba(195, 255, 0, 0.08);
   animation: scalePopIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s both;
   transition: all 0.3s ease;
   position: relative;
@@ -330,7 +392,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at center, rgba(39, 174, 96, 0.3) 0%, transparent 70%);
+  background: radial-gradient(circle at center, rgba(195, 255, 0, 0.18) 0%, transparent 70%);
   border-radius: 25px;
   opacity: 0;
   animation: cgpaGlow 2s ease-in-out 1.4s infinite;
@@ -338,22 +400,22 @@ body {
 
 .cgpa-value:hover {
   transform: scale(1.1);
-  box-shadow: 0 8px 25px rgba(39, 174, 96, 0.3);
+  box-shadow: 0 8px 25px rgba(195, 255, 0, 0.3);
 }
 
 /* ========== SCHOOL DETAILS ========== */
 .school-details {
   margin-top: 40px;
   padding: 25px;
-  background-color: #f8f9fa;
+  background-color: var(--surface);
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .school-details h4 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  color: #2B2B2B;
+  color: var(--text);
   margin: 0 0 20px 0;
   letter-spacing: 0.5px;
   display: flex;
@@ -376,7 +438,7 @@ body {
 .school-title {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  color: #27AE60;
+  color: var(--accent);
   margin: 0 0 8px 0;
   font-size: 0.95rem;
   letter-spacing: 0.5px;
@@ -393,20 +455,20 @@ body {
   font-size: 0.9rem;
 }
 
+.school-info {
+  color: var(--text);
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  font-size: 0.9rem;
+}
 .school-desc {
-  color: #666;
+  color: var(--muted);
   font-size: 0.9rem;
   margin: 0;
   line-height: 1.5;
 }
-
-.download-resume-container {
-  text-align: center;
-  margin: 40px 0;
-}
-
 .btn-download-resume {
-  background: linear-gradient(135deg, #27AE60 0%, #1E8449 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, #88b400 100%);
   border: none;
   padding: 18px 60px;
   font-weight: 700;
@@ -414,17 +476,17 @@ body {
   border-radius: 50px;
   transition: all 0.3s ease;
   font-family: 'Montserrat', sans-serif;
-  color: #fff !important;
+  color: #0b0b0b !important;
   text-decoration: none;
   display: inline-block;
-  box-shadow: 0 10px 30px rgba(39, 174, 96, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 140, 60, 0.18);
 }
 
 .btn-download-resume:hover {
-  background: linear-gradient(135deg, #FFFFFF 0%, #E8E8E8 100%);
-  color: #2B2B2B !important;
+  background: linear-gradient(135deg, #78a800 0%, #4f7b00 100%);
+  color: #ffffff !important;
   transform: translateY(-3px);
-  box-shadow: 0 15px 45px rgba(39, 174, 96, 0.4);
+  box-shadow: 0 15px 45px rgba(0, 140, 60, 0.35);
   text-decoration: none;
 }
 
@@ -439,7 +501,7 @@ body {
 /* ========== TECHNICAL SKILLS SECTION ========== */
 .skills-section {
   padding: 80px 0;
-  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  background: linear-gradient(135deg, var(--surface) 0%, var(--card) 100%);
   position: relative;
   overflow: hidden;
 }
@@ -451,7 +513,7 @@ body {
   right: -10%;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(39, 174, 96, 0.05) 0%, transparent 70%);
+  background: radial-gradient(circle, var(--glass-weak) 0%, transparent 70%);
   border-radius: 50%;
 }
 
@@ -465,14 +527,25 @@ body {
   justify-content: center;
 }
 
+.skill-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--muted);
+}
+.skill-bar {
+  height: 8px;
+  background-color: rgba(255,255,255,0.03);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.skill-progress {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), rgba(255,255,255,0.06));
+  border-radius: 10px;
+  animation: slideInLeft 1s ease-out;
+}
 .skill-card {
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-  padding: 30px 20px;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  border: 2px solid #f0f0f0;
   position: relative;
   overflow: hidden;
   width: 150px;
@@ -490,7 +563,7 @@ body {
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #27AE60, #FFFFFF);
+  background: linear-gradient(90deg, #00e200e0, #FFFFFF);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.4s ease;
@@ -502,14 +575,14 @@ body {
 
 .skill-card:hover {
   transform: translateY(-15px) rotateY(5deg);
-  box-shadow: 0 20px 50px rgba(39, 174, 96, 0.25);
-  border-color: #27AE60;
-  background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+  box-shadow: 0 20px 50px rgba(195, 255, 0, 0.25);
+  border-color: rgba(195,255,0,0.8);
+  background: linear-gradient(135deg, #0b0f06 0%, #0f0f0f 100%);
 }
 
 .skill-icon {
   font-size: 3rem;
-  color: #27AE60;
+  color: #FFFFFF;
   margin-bottom: 10px;
   transition: all 0.4s ease;
   display: inline-flex;
@@ -522,15 +595,15 @@ body {
 }
 
 .skill-card:hover .skill-icon {
-  color: #000000;
+  color: #FFFFFF;
   transform: scale(1.25) rotate(15deg);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(39, 174, 96, 0.1) 100%);
+  background: linear-gradient(135deg, rgba(153, 106, 106, 0.2) 0%, rgba(50, 224, 122, 0.1) 100%);
 }
 
 .skill-card h5 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  color: #2B2B2B;
+  color: #ffffff;
   margin: 8px 0 5px 0;
   letter-spacing: 0.8px;
   font-size: 0.9rem;
@@ -538,25 +611,25 @@ body {
 }
 
 .skill-card:hover h5 {
-  color: #27AE60;
+  color: #FFFFFF;
 }
 
 .skill-card p {
   font-size: 0.75rem;
-  color: #888;
+  color: #ffffff;
   margin: 0;
   line-height: 1.3;
   transition: color 0.3s ease;
 }
 
 .skill-card:hover p {
-  color: #666;
+  color: #FFFFFF;
 }
 
 /* ========== PROJECTS SECTION ========== */
 .projects-section {
   padding: 80px 0;
-  background-color: #f8f9fa;
+  background-color: var(--surface);
 }
 
 .projects-grid {
@@ -566,28 +639,31 @@ body {
   margin-top: 50px;
   position: relative;
   z-index: 1;
+  align-items: start;
+  align-content: start;
 }
 
 .project-card {
-  background-color: #fff;
+  background-color: #0f0f0f;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
+  border: 1px solid rgba(195,255,0,0.06);
 }
 
 .project-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 15px 50px rgba(39, 174, 96, 0.2);
+  box-shadow: 0 20px 60px rgba(195,255,0,0.08);
 }
 
 .project-image {
   position: relative;
   overflow: hidden;
   height: 200px;
-  background-color: #e0e0e0;
+  background-color: #121212;
 }
 
 .project-image img {
@@ -607,7 +683,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(39, 174, 96, 0.85);
+  background: rgba(195, 255, 0, 0.85);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -627,7 +703,7 @@ body {
   width: 60px;
   height: 60px;
   background-color: #fff;
-  color: #27AE60;
+  color: #00e200e0;
   border-radius: 50%;
   font-size: 1.5rem;
   transition: all 0.3s ease;
@@ -635,8 +711,8 @@ body {
 }
 
 .project-link:hover {
-  background-color: #27AE60;
-  color: #fff;
+  background-color: #00e200e0;
+  color: #1a1a1a;
   transform: scale(1.1);
 }
 
@@ -650,7 +726,7 @@ body {
 .project-content h4 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  color: #2B2B2B;
+  color: var(--text);
   margin: 0 0 15px 0;
   letter-spacing: 0.5px;
   font-size: 1.2rem;
@@ -665,8 +741,8 @@ body {
 
 .tech-tag {
   display: inline-block;
-  background-color: #f0f0f0;
-  color: #27AE60;
+  background-color: rgba(255,255,255,0.03);
+  color: var(--accent);
   padding: 4px 12px;
   border-radius: 20px;
   font-size: 0.75rem;
@@ -676,12 +752,13 @@ body {
 }
 
 .project-card:hover .tech-tag {
-  background-color: #27AE60;
-  color: #fff;
+  background-color: #FFFFFF;
+  color: var(--accent);
+  border: 1px solid var(--accent);
 }
 
 .project-desc {
-  color: #666;
+  color: var(--muted);
   font-size: 0.95rem;
   margin: 0;
   line-height: 1.6;
@@ -691,7 +768,7 @@ body {
 /* ========== LEADERSHIP & INVOLVEMENT SECTION ========== */
 .leadership-section {
   padding: 80px 0;
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  background: linear-gradient(135deg, var(--surface) 0%, var(--bg) 100%);
 }
 
 .leadership-content {
@@ -703,21 +780,40 @@ body {
 }
 
 .leadership-card {
-  background-color: #fff;
+  background-color: var(--card);
   border-radius: 8px;
   padding: 30px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
   transition: all 0.3s ease;
-  border-left: 5px solid #27AE60;
+  border-left: 5px solid var(--accent);
   flex: 1;
   min-width: 300px;
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.leadership-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(600px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(195, 255, 0, 0.1), transparent 80%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.leadership-card:hover::before {
+  opacity: 1;
 }
 
 .leadership-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 15px 40px rgba(39, 174, 96, 0.15);
+  box-shadow: 0 15px 40px rgba(195,255,0,0.08);
 }
 
 .leadership-header {
@@ -729,34 +825,34 @@ body {
 
 .leadership-icon {
   font-size: 2.5rem;
-  color: #27AE60;
+  color: var(--accent);
   flex-shrink: 0;
   width: 60px;
   height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, rgba(39, 174, 96, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%);
+  background: linear-gradient(135deg, var(--glass-weak) 0%, rgba(255,255,255,0.02) 100%);
   border-radius: 8px;
   transition: all 0.3s ease;
 }
 
 .leadership-card:hover .leadership-icon {
-  background: linear-gradient(135deg, rgba(39, 174, 96, 0.2) 0%, rgba(39, 174, 96, 0.1) 100%);
+  background: linear-gradient(135deg, rgba(195, 255, 0, 0.2) 0%, rgba(195, 255, 0, 0.1) 100%);
   transform: scale(1.1);
 }
 
 .leadership-info h4 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  color: #2B2B2B;
+  color: var(--text);
   margin: 0 0 8px 0;
   letter-spacing: 0.5px;
   font-size: 1.1rem;
 }
 
 .leadership-org {
-  color: #27AE60;
+  color: #00e200e0;
   font-size: 0.95rem;
   font-weight: 600;
   margin: 0 0 5px 0;
@@ -773,7 +869,7 @@ body {
 }
 
 .leadership-desc p {
-  color: #666;
+  color: var(--muted);
   font-size: 0.95rem;
   line-height: 1.6;
   margin-bottom: 15px;
@@ -786,7 +882,7 @@ body {
 }
 
 .leadership-highlights li {
-  color: #555;
+  color: var(--muted);
   font-size: 0.9rem;
   line-height: 1.8;
   padding-left: 20px;
@@ -798,15 +894,15 @@ body {
   content: '✓';
   position: absolute;
   left: 0;
-  color: #27AE60;
+  color: #00e200e0;
   font-weight: 700;
 }
 
 .achievement-card {
-  background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+  background: linear-gradient(135deg, var(--card) 0%, var(--surface) 100%);
   border-radius: 8px;
   padding: 40px 30px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
   transition: all 0.3s ease;
   text-align: center;
   flex: 1;
@@ -815,7 +911,27 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-top: 5px solid #27AE60;
+  border-top: 5px solid var(--accent);
+  position: relative;
+  overflow: hidden;
+}
+
+.achievement-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(600px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(39, 174, 96, 0.15), transparent 80%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.achievement-card:hover::before {
+  opacity: 1;
 }
 
 .achievement-card:hover {
@@ -823,9 +939,14 @@ body {
   box-shadow: 0 15px 40px rgba(39, 174, 96, 0.15);
 }
 
+.achievement-card > * {
+  position: relative;
+  z-index: 1;
+}
+
 .achievement-badge {
   font-size: 4rem;
-  color: #27AE60;
+  color: #00e200e0;
   margin-bottom: 20px;
   animation: bounce 2s infinite;
 }
@@ -833,21 +954,21 @@ body {
 .achievement-card h4 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  color: #2B2B2B;
+  color: var(--text);
   margin: 0 0 10px 0;
   letter-spacing: 0.5px;
   font-size: 1.3rem;
 }
 
 .achievement-date {
-  color: #27AE60;
+  color: #00e200e0;
   font-size: 0.9rem;
   font-weight: 600;
   margin: 0 0 15px 0;
 }
 
 .achievement-desc {
-  color: #666;
+  color: var(--muted);
   font-size: 0.95rem;
   line-height: 1.6;
   margin-bottom: 20px;
@@ -863,7 +984,7 @@ body {
 
 .tag {
   display: inline-block;
-  background-color: #27AE60;
+  background-color: #00e200e0;
   color: #fff;
   padding: 6px 15px;
   border-radius: 20px;
@@ -881,7 +1002,7 @@ body {
 /* ========== CERTIFICATES SECTION ========== */
 .certificates-section {
   padding: 80px 0;
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  background: linear-gradient(135deg, var(--surface) 0%, var(--card) 100%);
 }
 
 .certificates-grid {
@@ -894,21 +1015,21 @@ body {
   display: flex;
   align-items: flex-start;
   padding: 30px;
-  background-color: #fff;
+  background-color: var(--card);
   border-radius: 8px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
   transition: all 0.3s ease;
-  border-left: 5px solid #27AE60;
+  border-left: 5px solid var(--accent);
 }
 
 .certificate-card:hover {
   transform: translateX(10px);
-  box-shadow: 0 15px 40px rgba(39, 174, 96, 0.15);
+  box-shadow: 0 20px 50px rgba(195,255,0,0.08);
 }
 
 .certificate-icon {
   font-size: 2.5rem;
-  color: #27AE60;
+  color: #00e200e0;
   margin-right: 25px;
   flex-shrink: 0;
 }
@@ -922,7 +1043,7 @@ body {
 }
 
 .certificate-issuer {
-  color: #27AE60;
+  color: #00e200e0;
   font-size: 0.9rem;
   font-weight: 600;
   margin: 0 0 10px 0;
@@ -938,7 +1059,7 @@ body {
 /* ========== CONTACT SECTION ========== */
 #Contact {
   padding: 80px 0;
-  background-color: #f8f9fa;
+  background-color: var(--surface);
 }
 
 .section-subtitle {
@@ -951,23 +1072,25 @@ body {
   max-width: 600px;
   margin: 50px auto;
   padding: 30px;
-  background-color: #fff;
+  background-color: var(--card);
   border-radius: 8px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
 }
 
 .form-control {
-  border: 2px solid #ddd;
+  border: 2px solid rgba(255,255,255,0.03);
   border-radius: 5px;
   padding: 12px 15px;
   font-family: 'Muli', sans-serif;
   font-size: 0.95rem;
   transition: all 0.3s ease;
+  background-color: transparent;
+  color: var(--text);
 }
 
 .form-control:focus {
-  border-color: #27AE60;
-  box-shadow: 0 0 0 0.2rem rgba(39, 174, 96, 0.25);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 0.2rem rgba(195,255,0,0.12);
   outline: none;
 }
 
@@ -980,21 +1103,22 @@ body {
 }
 
 .btn-primary {
-  background-color: #27AE60;
+  background-color: #00e200e0;
   border: none;
   padding: 15px 50px;
   font-weight: 700;
   letter-spacing: 1px;
   border-radius: 50px;
   transition: all 0.3s ease;
+  color: #1a1a1a !important;
 }
 
 .btn-primary:hover,
 .btn-primary:focus {
-  background-color: #FFFFFF;
-  color: #2B2B2B;
+  background-color: #A8CC00;
+  color: #1a1a1a !important;
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(39, 174, 96, 0.3);
+  box-shadow: 0 10px 30px rgba(195, 255, 0, 0.3);
 }
 
 .social-section {
@@ -1007,7 +1131,7 @@ body {
 .social-section h4 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  color: #27AE60;
+  color: #00e200e0;
   margin-bottom: 15px;
   letter-spacing: 1px;
 }
@@ -1033,7 +1157,7 @@ body {
   justify-content: center;
   width: 70px;
   height: 70px;
-  background-color: #27AE60;
+  background-color: #00e200e0;
   color: #FFFFFF;
   border-radius: 50%;
   font-size: 1.5rem;
@@ -1043,7 +1167,7 @@ body {
 
 .social-icon:hover {
   background-color: #FFFFFF;
-  color: #27AE60;
+  color: #00e200e0;
   transform: translateY(-8px);
   box-shadow: 0 15px 35px rgba(39, 174, 96, 0.3);
 }
@@ -1078,34 +1202,34 @@ body {
 }
 
 .profile-link-item {
-  background-color: #fff;
+  background-color: var(--card);
   padding: 25px;
   border-radius: 8px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
   transition: all 0.3s ease;
 }
 
 .profile-link-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(39, 174, 96, 0.15);
+  box-shadow: 0 8px 20px rgba(195,255,0,0.06);
 }
 
 .profile-link-item i {
   font-size: 2rem;
-  color: #27AE60;
+  color: #00e200e0;
   margin-bottom: 15px;
   display: block;
 }
 
 .profile-link-item p {
   margin: 0;
-  color: #333;
+  color: var(--muted);
   font-size: 0.9rem;
   line-height: 1.6;
 }
 
 .profile-link-item strong {
-  color: #27AE60;
+  color: #00e200e0;
   font-weight: 700;
 }
 
@@ -1253,13 +1377,27 @@ footer {
     margin: 30px 15px;
   }
 
+  .statistics-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+  }
+
   .scroll-btn {
     padding: 12px 30px;
     font-size: 0.9rem;
   }
 
   .download-resume-container {
-    margin: 30px 0;
+    margin: 30px ;
   }
 
   .btn-download-resume {
@@ -1375,6 +1513,20 @@ footer {
 
   .social-links {
     gap: 15px;
+  }
+
+  .statistics-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .stat-number {
+    font-size: 1.8rem;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
   }
 
   .social-icon {

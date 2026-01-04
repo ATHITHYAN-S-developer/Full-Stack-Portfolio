@@ -119,4 +119,103 @@ function initCGPAAnimation() {
 // Initialize CGPA animation when document is ready
 $(document).ready(function() {
   initCGPAAnimation();
+  initLeadershipMouseAnimation();
+  initStatisticsCounter();
 });
+
+// Leadership Section Mouse Animation
+function initLeadershipMouseAnimation() {
+  const leadershipCards = document.querySelectorAll('.leadership-card, .achievement-card');
+
+  leadershipCards.forEach((card) => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      card.style.setProperty('--mouse-x', x + 'px');
+      card.style.setProperty('--mouse-y', y + 'px');
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.setProperty('--mouse-x', '50%');
+      card.style.setProperty('--mouse-y', '50%');
+    });
+
+    // Tilt effect on mouse move
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const mouseX = e.clientX - rect.left;
+      const mouseY = e.clientY - rect.top;
+
+      const rotateX = ((mouseY - centerY) / centerY) * 5;
+      const rotateY = ((centerX - mouseX) / centerX) * 5;
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(-8px)';
+    });
+  });
+}
+
+// Statistics Counter Animation
+function initStatisticsCounter() {
+  const statNumbers = document.querySelectorAll('.stat-number');
+  let hasAnimated = false;
+
+  function animateStats() {
+    if (hasAnimated) return;
+    hasAnimated = true;
+
+    statNumbers.forEach((stat) => {
+      const target = parseInt(stat.getAttribute('data-target')) || 0;
+      const duration = 2000;
+      const startTime = Date.now();
+      const startValue = 0;
+
+      function updateCount() {
+        const now = Date.now();
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        // Easing function
+        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+        const currentValue = Math.floor(startValue + (target - startValue) * easeOutQuart);
+
+        stat.textContent = currentValue + '+';
+
+        if (progress < 1) {
+          requestAnimationFrame(updateCount);
+        } else {
+          stat.textContent = target + '+';
+        }
+      }
+
+      updateCount();
+    });
+  }
+
+  // Trigger animation when stats come into view
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          animateStats();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    const statsContainer = document.querySelector('.statistics-container');
+    if (statsContainer) {
+      observer.observe(statsContainer);
+    }
+  } else {
+    // Fallback
+    $(window).on('load', animateStats);
+  }
+}
