@@ -58,3 +58,65 @@ function onScroll(event) {
     }
   });
 }
+
+// CGPA Count Animation
+function initCGPAAnimation() {
+  const cgpaElement = $('.cgpa-value');
+  let hasAnimated = false;
+
+  function startCGPACount() {
+    if (hasAnimated || cgpaElement.length === 0) return;
+
+    hasAnimated = true;
+    const targetValue = 9.2;
+    const duration = 2000; // 2 seconds
+    const startTime = Date.now();
+    const startValue = 0;
+
+    function animateCount() {
+      const now = Date.now();
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Easing function for smooth animation
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      const currentValue = startValue + (targetValue - startValue) * easeOutQuart;
+      
+      cgpaElement.text(currentValue.toFixed(1));
+
+      if (progress < 1) {
+        requestAnimationFrame(animateCount);
+      } else {
+        cgpaElement.text(targetValue.toFixed(1));
+      }
+    }
+
+    animateCount();
+  }
+
+  // Use Intersection Observer to trigger animation when element comes into view
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          startCGPACount();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.5
+    });
+
+    cgpaElement.each(function() {
+      observer.observe(this);
+    });
+  } else {
+    // Fallback for older browsers - start animation on load
+    $(window).on('load', startCGPACount);
+  }
+}
+
+// Initialize CGPA animation when document is ready
+$(document).ready(function() {
+  initCGPAAnimation();
+});

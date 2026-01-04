@@ -242,6 +242,164 @@ body {
   background-color: #fff;
 }
 
+.resume-item {
+  display: flex;
+  margin-bottom: 40px;
+}
+
+.resume-icon {
+  font-size: 2.5rem;
+  color: #27AE60;
+  margin-right: 25px;
+  flex-shrink: 0;
+}
+
+.resume-text h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: #2B2B2B;
+  margin: 0 0 15px 0;
+  letter-spacing: 0.5px;
+}
+
+.resume-text h5 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: #2B2B2B;
+  margin: 0 0 8px 0;
+  letter-spacing: 0.5px;
+}
+
+.resume-meta {
+  color: #27AE60;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+}
+
+.resume-desc {
+  color: #666;
+  font-size: 0.95rem;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ========== CGPA DISPLAY ========== */
+.cgpa-display {
+  margin-top: 20px;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(39, 174, 96, 0.1) 0%, rgba(255, 255, 255, 0.5) 100%);
+  border-left: 4px solid #27AE60;
+  border-radius: 5px;
+  animation: slideInUp 0.8s ease-out 0.4s both;
+}
+
+.cgpa-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.cgpa-label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: #2B2B2B;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  animation: fadeIn 0.8s ease-out 0.5s both;
+}
+
+.cgpa-value {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #27AE60;
+  background-color: #fff;
+  padding: 8px 15px;
+  border-radius: 25px;
+  box-shadow: 0 2px 8px rgba(39, 174, 96, 0.15);
+  animation: scalePopIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s both;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.cgpa-value::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(39, 174, 96, 0.3) 0%, transparent 70%);
+  border-radius: 25px;
+  opacity: 0;
+  animation: cgpaGlow 2s ease-in-out 1.4s infinite;
+}
+
+.cgpa-value:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(39, 174, 96, 0.3);
+}
+
+/* ========== SCHOOL DETAILS ========== */
+.school-details {
+  margin-top: 40px;
+  padding: 25px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.school-details h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: #2B2B2B;
+  margin: 0 0 20px 0;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.school-item {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.school-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.school-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: #27AE60;
+  margin: 0 0 8px 0;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+.school-title i {
+  margin-right: 8px;
+}
+
+.school-info {
+  color: #2B2B2B;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  font-size: 0.9rem;
+}
+
+.school-desc {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
 .download-resume-container {
   text-align: center;
   margin: 40px 0;
@@ -393,6 +551,331 @@ body {
 
 .skill-card:hover p {
   color: #666;
+}
+
+/* ========== PROJECTS SECTION ========== */
+.projects-section {
+  padding: 80px 0;
+  background-color: #f8f9fa;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  margin-top: 50px;
+  position: relative;
+  z-index: 1;
+}
+
+.project-card {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 50px rgba(39, 174, 96, 0.2);
+}
+
+.project-image {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+  background-color: #e0e0e0;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.1);
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(39, 174, 96, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  color: #27AE60;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.project-link:hover {
+  background-color: #27AE60;
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.project-content {
+  padding: 25px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-content h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: #2B2B2B;
+  margin: 0 0 15px 0;
+  letter-spacing: 0.5px;
+  font-size: 1.2rem;
+}
+
+.project-tech {
+  margin: 0 0 15px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tech-tag {
+  display: inline-block;
+  background-color: #f0f0f0;
+  color: #27AE60;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.project-card:hover .tech-tag {
+  background-color: #27AE60;
+  color: #fff;
+}
+
+.project-desc {
+  color: #666;
+  font-size: 0.95rem;
+  margin: 0;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+/* ========== LEADERSHIP & INVOLVEMENT SECTION ========== */
+.leadership-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+.leadership-content {
+  margin-top: 50px;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+.leadership-card {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border-left: 5px solid #27AE60;
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.leadership-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(39, 174, 96, 0.15);
+}
+
+.leadership-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.leadership-icon {
+  font-size: 2.5rem;
+  color: #27AE60;
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(39, 174, 96, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.leadership-card:hover .leadership-icon {
+  background: linear-gradient(135deg, rgba(39, 174, 96, 0.2) 0%, rgba(39, 174, 96, 0.1) 100%);
+  transform: scale(1.1);
+}
+
+.leadership-info h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: #2B2B2B;
+  margin: 0 0 8px 0;
+  letter-spacing: 0.5px;
+  font-size: 1.1rem;
+}
+
+.leadership-org {
+  color: #27AE60;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 5px 0;
+}
+
+.leadership-period {
+  color: #999;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.leadership-desc {
+  flex-grow: 1;
+}
+
+.leadership-desc p {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.leadership-highlights ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.leadership-highlights li {
+  color: #555;
+  font-size: 0.9rem;
+  line-height: 1.8;
+  padding-left: 20px;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.leadership-highlights li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #27AE60;
+  font-weight: 700;
+}
+
+.achievement-card {
+  background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+  border-radius: 8px;
+  padding: 40px 30px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  text-align: center;
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: 5px solid #27AE60;
+}
+
+.achievement-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(39, 174, 96, 0.15);
+}
+
+.achievement-badge {
+  font-size: 4rem;
+  color: #27AE60;
+  margin-bottom: 20px;
+  animation: bounce 2s infinite;
+}
+
+.achievement-card h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: #2B2B2B;
+  margin: 0 0 10px 0;
+  letter-spacing: 0.5px;
+  font-size: 1.3rem;
+}
+
+.achievement-date {
+  color: #27AE60;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0 0 15px 0;
+}
+
+.achievement-desc {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.achievement-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: auto;
+}
+
+.tag {
+  display: inline-block;
+  background-color: #27AE60;
+  color: #fff;
+  padding: 6px 15px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.tag:hover {
+  background-color: #1E8449;
+  transform: scale(1.05);
 }
 
 /* ========== CERTIFICATES SECTION ========== */
@@ -692,6 +1175,31 @@ footer {
   }
 }
 
+@keyframes scalePopIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes cgpaGlow {
+  0%, 100% {
+    opacity: 0;
+    box-shadow: 0 2px 8px rgba(39, 174, 96, 0.15);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 8px 20px rgba(39, 174, 96, 0.4);
+  }
+}
+
 /* ========== RESPONSIVE DESIGN ========== */
 @media (max-width: 768px) {
   .hero-title {
@@ -710,6 +1218,8 @@ footer {
   .resume-section,
   .skills-section,
   .certificates-section,
+  .projects-section,
+  .leadership-section,
   #Contact {
     padding: 50px 0;
   }
@@ -723,6 +1233,15 @@ footer {
   .resume-icon {
     margin-right: 0;
     margin-bottom: 20px;
+  }
+
+  .school-details {
+    margin-top: 30px;
+  }
+
+  .cgpa-item {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .profile-image {
@@ -784,6 +1303,11 @@ footer {
     height: 220px;
   }
 
+  .projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+  }
+
   .google-drive-container {
     grid-template-columns: 1fr;
     gap: 30px;
@@ -791,6 +1315,15 @@ footer {
 
   .drive-links-grid {
     grid-template-columns: 1fr;
+  }
+
+  .leadership-content {
+    flex-direction: column;
+  }
+
+  .leadership-card,
+  .achievement-card {
+    min-width: 100%;
   }
 }
 
@@ -819,6 +1352,8 @@ footer {
   .resume-section,
   .skills-section,
   .certificates-section,
+  .projects-section,
+  .leadership-section,
   #Contact {
     padding: 40px 15px;
   }
@@ -900,5 +1435,40 @@ footer {
 
   .portfolio-image {
     height: 180px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .project-card {
+    max-width: 100%;
+  }
+
+  .leadership-content {
+    flex-direction: column;
+  }
+
+  .leadership-card,
+  .achievement-card {
+    min-width: 100%;
+  }
+
+  .achievement-badge {
+    font-size: 2.5rem;
+  }
+
+  .achievement-card h4 {
+    font-size: 1.1rem;
+  }
+
+  .achievement-tags {
+    gap: 8px;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    padding: 5px 12px;
   }
 }
